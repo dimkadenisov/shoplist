@@ -1,0 +1,12 @@
+.add-item-form {
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.add-item-form input {
+  margin-bottom: 5px;
+}
+
+.add-item-form button {
+  flex-shrink: 0;
+}
