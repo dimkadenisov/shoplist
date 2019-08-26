@@ -3,7 +3,12 @@ import TodoListItem from '../TodoListItem';
 
 import './TodoList.css';
 
-const TodoList = ( { todos, onDeleted, onToggleImportant, onToggleDone } ) => {
+export default function TodoList({
+  todos,
+  onDeleted,
+  onToggleImportant,
+  onToggleDone
+}) {
 
   const elements = todos.map((item) => {
 
@@ -27,5 +32,3 @@ const TodoList = ( { todos, onDeleted, onToggleImportant, onToggleDone } ) => {
     </ul>
   );
 };
-
-export default TodoList;

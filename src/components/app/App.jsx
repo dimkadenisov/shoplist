@@ -110,7 +110,7 @@ export default class App extends Component {
 
   search = (items, term) => {
     return items.filter((item) => {
-      return item.label.toLowerCase().indexOf(term.toLowerCase()) > -1;
+      return item.label.toLowerCase().indexOf(term.trim().toLowerCase()) > -1;
     });
   }
 
@@ -177,7 +177,10 @@ export default class App extends Component {
           onToggleDone = { this.onToggleDone }
           />
 
-        <ItemAddForm onItemAdded={ this.addItem }/>
+        <ItemAddForm
+          onItemAdded={ this.addItem }
+          label={this.state.label}
+          price={this.state.price}/>
       </div>
     );
   };
