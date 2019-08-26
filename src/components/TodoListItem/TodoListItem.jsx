@@ -1,45 +1,49 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import './TodoListItem.css';
 
-export default class TodoListItem extends Component {
+export default function TodoListItem({
+  label,
+  price,
+  onDeleted,
+  onToggleImportant,
+  onToggleDone,
+  important,
+  done}) {
 
-  render() {
+  let classNames = 'todo-list-item';
+  if (done) classNames += ' done';
+  if(important) classNames += ' important';
 
-    const { label, price, onDeleted, onToggleImportant, onToggleDone, important, done } = this.props;
+  return (
+    <span className = { classNames }>
+      <span
+        className="todo-list-item-text"
+        onClick={ onToggleDone }>
 
-    let classNames = 'todo-list-item';
-    if (done) classNames += ' done';
-    if(important) classNames += ' important'
-
-    return (
-      <span className={classNames}>
-        <span
-          className="todo-list-item-text"
-          onClick={ onToggleDone }>
-
-          <span className="todo-list-item-label">
-            {label}
-          </span>
-
-          <span className="todo-list-item-price">
-            {price}
-          </span>
-
+        <span className = "todo-list-item-label">
+          { label }
         </span>
 
-        <button type="button"
-                className="btn btn-outline-success btn-sm float-right"
-                onClick={ onToggleImportant }>
-          <i className="fa fa-exclamation" />
-        </button>
+        <span className = "todo-list-item-price">
+          { price }
+        </span>
 
-        <button type="button"
-                className="btn btn-outline-danger btn-sm float-right"
-                onClick={onDeleted}>
-          <i className="fa fa-trash-o" />
-        </button>
       </span>
-    );
-  };
+
+      <button
+        type = "button"
+        className = "btn btn-outline-success btn-sm float-right"
+        onClick = { onToggleImportant }>
+        <i className = "fa fa-exclamation" />
+      </button>
+
+      <button
+        type = "button"
+        className = "btn btn-outline-danger btn-sm float-right"
+        onClick = { onDeleted }>
+        <i className = "fa fa-trash-o" />
+      </button>
+    </span>
+  );
 };

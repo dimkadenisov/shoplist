@@ -1,61 +1,45 @@
-import React, {Component} from 'react';
+import React, {useState, useCallback} from 'react';
 import "./ItemAddForm.css";
 
-export default class ItemAddForm extends Component {
+export default function ItemAddForm({ onItemAdded }) {
 
-  state = {
-    label: '',
-    price: ''
-  };
+  const [label, setLabel] = useState('');
+  const [price, setPrice] = useState('');
 
-  onLabelChange = (e) => {
-    this.setState({
-      label: e.target.value
-    })
-  }
+  const onLabelChange = useCallback(e => setLabel(e.target.value), []);
+  const onPriceChange = useCallback(e => setPrice(e.target.value), []);
 
-  onPriceChange = (e) => {
-    this.setState({
-      price: e.target.value
-    })
-  }
-
-
-  onSubmit = (e) => {
+  const onSubmit = useCallback(e => {
     e.preventDefault();
-    if(this.props.onItemAdded(this.state.label, this.state.price)) {
-      this.setState({
-        label: '',
-        price: ''
-      });
+    if(onItemAdded(label, price)) {
+      setLabel(''); // хук не на верхнем уровне
+      setPrice(''); // хук не на верхнем уровне
     }
-  }
+  }, [onItemAdded, label, price]); // реакт просит добавить этот массив
 
-  render() {
-    return(
-      <form className="d-flex add-item-form"
-        onSubmit={this.onSubmit}
-        >
-        <input
-          type="text"
-          className="form-control new-item-text"
-          onChange={this.onLabelChange}
-          placeholder="What's need to be done"
-          value={this.state.label}
-          />
-        <input
-          type="number"
-          className="form-control new-item-text"
-          onChange={this.onPriceChange}
-          placeholder="price"
-          value={this.state.price}
-          min="0"
-          />
-        <button
-          className="btn btn-outline-secondary">
-          Add Item
-        </button>
-      </form>
-    )
-  };
+  return (
+    <form className="d-flex add-item-form"
+      onSubmit = { onSubmit }
+      >
+      <input
+        type = "text"
+        className = "form-control new-item-text"
+        onChange = { onLabelChange }
+        placeholder = "What's need to be done"
+        value = { label }
+        />
+      <input
+        type = "number"
+        className = "form-control new-item-text"
+        onChange = { onPriceChange }
+        placeholder = "price"
+        value = {price}
+        min = "0"
+        />
+      <button
+        className = "btn btn-outline-secondary">
+        Add Item
+      </button>
+    </form>
+  )
 };
