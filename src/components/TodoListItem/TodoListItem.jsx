@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './todo-list-item.css';
+import './TodoListItem.css';
 
 export default class TodoListItem extends Component {
 
@@ -41,5 +41,5 @@ export default class TodoListItem extends Component {
         </button>
       </span>
     );
-  }
-}
+  };
+};

@@ -1,5 +1,5 @@
 import React from 'react';
-import './sort-block.css'
+import './SortBlock.css'
 
 const SortBlock = ({onSortChange}) => {
 

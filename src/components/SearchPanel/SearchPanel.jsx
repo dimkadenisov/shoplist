@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import './search-panel.css';
+import './SearchPanel.css';
 
 export default class SearchPanel extends Component {
   state = {
@@ -22,5 +22,5 @@ export default class SearchPanel extends Component {
         value={this.state.term}
         onChange={this.onSearchChange} />
     );
-  }
+  };
 };

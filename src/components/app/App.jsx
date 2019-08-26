@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 
-import "./app.css";
+import "./App.css";
 
-import AppHeader from '../app-header';
-import TodoList from '../todo-list';
-import SearchPanel from '../search-panel';
-import ItemStatusFilter from '../item-status-filter';
-import ItemAddForm from '../item-add-form';
-import SortBlock from '../sort-block';
+import AppHeader from '../AppHeader';
+import TodoList from '../TodoList';
+import SearchPanel from '../SearchPanel';
+import ItemStatusFilter from '../ItemStatusFilter';
+import ItemAddForm from '../ItemAddForm';
+import SortBlock from '../SortBlock';
 
 export default class App extends Component {
 

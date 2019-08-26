@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './item-status-filter.css';
+import './ItemStatusFilter.css';
 
 export default class ItemStatusFilter extends Component {
 
@@ -27,11 +27,11 @@ export default class ItemStatusFilter extends Component {
         {label}
         </button>
       )
-    })
+    });
     return (
       <div className="btn-group">
         {buttons}
       </div>
-    )
-  }
-}
+    );
+  };
+};
